@@ -26,8 +26,7 @@ public class TextProcessor {
                 .flatMap(Pattern.compile(" ")::splitAsStream) //Divide el String en palabras
                 .map(string -> string.replaceAll("\\W", "")) //Borra los signos al final de las palabras
                 .distinct();            
-        ConcurrentMap<Integer, String> map;
-        map = stream.collect(Collectors
+        ConcurrentMap<Integer, String> map = stream.collect(Collectors
                 .toConcurrentMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2));
         return map;
     }
