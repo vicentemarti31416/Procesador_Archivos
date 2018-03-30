@@ -24,7 +24,7 @@ public class TextProcessor {
     public static Map<Integer, String> groupWordsByLength(Path path) throws IOException {
         Stream<String> stream = Files.lines(path)
                 .flatMap(Pattern.compile(" ")::splitAsStream) //Divide el String en palabras
-                .map(string -> string.replaceAll("\\W", "")) //Borra los signos al final de las palabras
+                .map(string -> string.replaceAll("\\W", "")) //Borra los signos
                 .distinct();            
         ConcurrentMap<Integer, String> map = stream.collect(Collectors
                 .toConcurrentMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2));
