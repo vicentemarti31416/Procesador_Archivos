@@ -15,7 +15,6 @@ public class TextProcessor {
 
     public static Path selectText() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File(".txt"));
         chooser.showDialog(null, "Select");
         Path path = chooser.getSelectedFile().toPath();
         return path;
